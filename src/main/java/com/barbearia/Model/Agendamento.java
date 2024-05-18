@@ -1,5 +1,7 @@
 package com.barbearia.Model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Agendamento {
@@ -11,12 +13,16 @@ public class Agendamento {
     private Date dataAgendamento;
     private String observacao;
 
-    public Agendamento(int idAgendamento, Cliente cliente, Servico servico, float valor, Date dataAgendamento) {
+    public Agendamento(int idAgendamento, Cliente cliente, Servico servico, float valor, String dataAgendamento) {
         this.idAgendamento = idAgendamento;
         this.cliente = cliente;
         this.servico = servico;
         this.valor = valor;
-        this.dataAgendamento = dataAgendamento;
+        try {
+            this.dataAgendamento = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(dataAgendamento);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Agendamento() {

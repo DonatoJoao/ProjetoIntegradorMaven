@@ -14,6 +14,13 @@ public class Servico {
         this.valor = valor;
     }
 
+    public Servico(float valor) {
+        this.valor = valor;
+    }
+
+    public Servico() {
+    }
+
     public int getId() {
         return id;
     }

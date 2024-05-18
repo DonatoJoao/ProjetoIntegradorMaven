@@ -1,5 +1,7 @@
 package com.barbearia.Model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 abstract class Usuario {
@@ -12,7 +14,7 @@ abstract class Usuario {
     private Endereco endereco;
     private Date dataNascimento;
 
-    public Usuario(int id, String cpf, String nome, String senha ,String telefone, String email, Endereco endereco, Date dataNascimento) {
+    public Usuario(int id, String cpf, String nome, String senha ,String telefone, String email, Endereco endereco, String dataNascimento) {
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
@@ -20,7 +22,12 @@ abstract class Usuario {
         this.telefone = telefone;
         this.email = email;
         this.endereco = endereco;
-        this.dataNascimento = dataNascimento;
+        try {
+            this.dataNascimento = new SimpleDateFormat("dd/MM/yyyy ").parse(dataNascimento);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        ;
     }
 
     public Usuario() {
@@ -31,14 +38,37 @@ abstract class Usuario {
         this.nome = nome;
         this.senha = senha;
     }
-}
-class Cliente extends  Usuario{
-    private float saldo;
-    private Plano plano;
 
+    public int getId() {
+        return id;
+    }
 
-}
-class Colaborador extends Usuario{
-        private String nivelAcesso;
+    public String getSenha() {
+        return senha;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
 }
 
