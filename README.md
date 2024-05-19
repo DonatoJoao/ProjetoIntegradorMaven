@@ -36,7 +36,7 @@ Deverá seguir esses passos:
 
 1. Criando as classes
 
-**Agendamento**
+<summary>**Agendamento**</summary>
 
 ```bash
  package com.barbearia.Model;
