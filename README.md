@@ -6,15 +6,11 @@
   width="450"/>
 </div>
 
-
-
 ***
  
 ## Introdução 
 
 Desenvolver uma aplicação web utilizando linguagem de programação JAVA, um framework, banco de dados e controle de versionamento com GitHub.
-
-
 
 ****
 
@@ -40,7 +36,7 @@ Deverá seguir esses passos:
  
 <summary>Agendamento</summary>
 
-```bash
+```ruby
  package com.barbearia.Model;
 
 import java.text.ParseException;
