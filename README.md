@@ -37,7 +37,7 @@ Deverá seguir esses passos:
 <summary>Agendamento</summary>
 
 ```ruby
- package com.barbearia.Model;
+package com.barbearia.Model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -122,7 +122,7 @@ public class Agendamento {
  
 <summary>Cliente</summary>
 
-```bash
+```ruby
 package com.barbearia.Model;
 
 public class Cliente extends Usuario {
@@ -141,7 +141,7 @@ public class Cliente extends Usuario {
 
 <summary>Colaborador</summary>
 
-```bash
+```ruby
 package com.barbearia.Model;
 
 class Colaborador extends Usuario {
@@ -155,9 +155,10 @@ class Colaborador extends Usuario {
 </details>
 
 <details>
+ 
 <summary>Endereço</summary>
 
-```bash
+```ruby
 package com.barbearia.Model;
 
 class Endereco {
@@ -170,7 +171,7 @@ class Endereco {
 
 <summary>Plano</summary>
 
-```bash
+```ruby
 package com.barbearia.Model;
 
 public class Plano {
@@ -182,9 +183,9 @@ public class Plano {
 
 <details>
 
- <summary>Serviço</summary>summary>
+<summary>Serviço</summary>summary>
 
-```bash
+```ruby
 package com.barbearia.Model;
 
 import javax.swing.*;
@@ -237,9 +238,9 @@ public class Servico {
 
 <details>
 
- <summary>Usuário</summary>summary>
+<summary>Usuário</summary>summary>
 
-```bash
+```ruby
 package com.barbearia.Model;
 
 import java.text.ParseException;
