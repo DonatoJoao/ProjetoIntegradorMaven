@@ -183,7 +183,7 @@ public class Plano {
 
 <details>
 
-<summary>Serviço</summary>summary>
+<summary>Serviço</summary>
 
 ```ruby
 package com.barbearia.Model;
@@ -238,7 +238,7 @@ public class Servico {
 
 <details>
 
-<summary>Usuário</summary>summary>
+<summary>Usuário</summary>
 
 ```ruby
 package com.barbearia.Model;
