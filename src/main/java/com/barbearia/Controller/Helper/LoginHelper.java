@@ -4,6 +4,7 @@
  */
 package com.barbearia.Controller.Helper;
 
+import com.barbearia.Model.Cliente;
 import com.barbearia.Model.Usuario;
 import com.barbearia.View.Login;
 
@@ -20,7 +21,7 @@ public class LoginHelper {
     public Usuario obterModelo(){
         String nome = view.getTextUsuarioInput().getText();
         String senha = String.valueOf(view.getTextSenha());
-        Usuario modelo = new Usuario(0, nome, senha);
+        Usuario modelo = new Cliente("0", nome, senha);
         return modelo;
     }
     
