@@ -120,6 +120,7 @@ public class Agendamento {
 }
 ```
 </details>
+<details>
 **Cliente**
 
 ```bash
@@ -135,6 +136,7 @@ public class Cliente extends Usuario {
 
 }
 ```
+</details>
 **Colaborador**
 
 ```bash
