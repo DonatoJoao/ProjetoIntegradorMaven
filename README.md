@@ -146,7 +146,15 @@ class Colaborador extends Usuario {
     }
 }
 ```
-...
+**Endereço**
+
+```bash
+package com.barbearia.Model;
+
+class Endereco {
+
+}
+```
 
 ```bash
 
