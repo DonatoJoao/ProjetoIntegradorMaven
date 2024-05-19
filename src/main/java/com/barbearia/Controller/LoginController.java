@@ -30,9 +30,6 @@ public class LoginController {
             view.exibeMensagem("Usuário ou senha inválidos");
         }
 
-
-        //Verificar se usuario da view tiver banco
-
     }
     
     public void fizTarefa(){
