@@ -155,6 +155,17 @@ class Endereco {
 
 }
 ```
+**Plano**
+
+```bash
+package com.barbearia.Model;
+
+public class Plano {
+
+
+}
+```
+
 
 ```bash
 
