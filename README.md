@@ -121,7 +121,7 @@ public class Agendamento {
 ```
 </details>
 <details>
-**Cliente**
+<summary>Cliente</summary>
 
 ```bash
 package com.barbearia.Model;
