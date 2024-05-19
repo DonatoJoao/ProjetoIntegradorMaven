@@ -35,8 +35,9 @@ Desenvolver um sistema para: gerar controle de colaboradores, cadastro de client
 Deverá seguir esses passos: 
 
 1. Criando as classes
+   
 <details>
-
+ 
 <summary>Agendamento</summary>
 
 ```bash
@@ -120,7 +121,9 @@ public class Agendamento {
 }
 ```
 </details>
+
 <details>
+ 
 <summary>Cliente</summary>
 
 ```bash
@@ -137,7 +140,10 @@ public class Cliente extends Usuario {
 }
 ```
 </details>
-**Colaborador**
+
+<details>
+
+<summary>Colaborador</summary>
 
 ```bash
 package com.barbearia.Model;
@@ -150,7 +156,10 @@ class Colaborador extends Usuario {
     }
 }
 ```
-**Endereço**
+</details>
+
+<details>
+<summary>Endereço</summary>
 
 ```bash
 package com.barbearia.Model;
@@ -159,7 +168,11 @@ class Endereco {
 
 }
 ```
-**Plano**
+</details>
+
+<details>
+
+<summary>Plano</summary>
 
 ```bash
 package com.barbearia.Model;
@@ -169,7 +182,11 @@ public class Plano {
 
 }
 ```
-**Serviço**
+</details>
+
+<details>
+
+ <summary>Serviço</summary>summary>
 
 ```bash
 package com.barbearia.Model;
@@ -220,7 +237,11 @@ public class Servico {
     }
 }
 ```
-**Usuário**
+</details>
+
+<details>
+
+ <summary>Usuário</summary>summary>
 
 ```bash
 package com.barbearia.Model;
@@ -297,10 +318,7 @@ abstract class Usuario {
     }
 }
 ```
-
-```bash
-
-```
+</details>
 
 ...
 
