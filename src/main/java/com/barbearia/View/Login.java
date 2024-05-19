@@ -5,6 +5,7 @@
 package com.barbearia.View;
 
 import com.barbearia.Controller.LoginController;
+import com.barbearia.Model.DAO.Banco;
 
 import javax.swing.*;
 
@@ -22,6 +23,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         controller = new LoginController(this);
+        Banco.inicia();
     }
 
     /**
@@ -103,7 +105,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.controller.fizTarefa();
+        this.controller.entrarNoSistema();
         
                 
         

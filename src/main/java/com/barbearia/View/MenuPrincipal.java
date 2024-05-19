@@ -4,17 +4,22 @@
  */
 package com.barbearia.View;
 
+import com.barbearia.Controller.MenuPrincipalController;
+
 /**
  *
  * @author JOÃO
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
+    private final MenuPrincipalController controller;
+
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
         initComponents();
+        this.controller = new MenuPrincipalController(this);
     }
 
     /**
@@ -81,7 +86,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void MenuItemClienteActionPerformed(java.awt.event.ActionEvent evt){
+        // TODO add your handling code here:
+    }
+    private void MenuItemRelatorioActionsperformed(java.awt.event.ActionEvent evt){
+        // TODO add your handling code here:
+    }
+    private void MenuItemAgendaActionPerformed(java.awt.event.ActionEvent evt){
+        this.controller.navegarParaAgenda();
+    }
 
     /**
      * @param args the command line arguments

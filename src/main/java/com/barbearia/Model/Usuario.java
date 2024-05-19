@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-abstract class Usuario {
+public abstract class Usuario {
     private int id;
     private String senha;
     private String cpf;
@@ -23,7 +23,7 @@ abstract class Usuario {
         this.email = email;
         this.endereco = endereco;
         try {
-            this.dataNascimento = new SimpleDateFormat("dd/MM/yyyy ").parse(dataNascimento);
+            this.dataNascimento = new SimpleDateFormat("dd/MM/yyyy").parse(dataNascimento);
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }

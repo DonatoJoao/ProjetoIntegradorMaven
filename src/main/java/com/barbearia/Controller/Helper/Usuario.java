@@ -8,7 +8,7 @@ package com.barbearia.Controller.Helper;
  *
  * @author JOÃO
  */
-class Usuario {
+public class Usuario {
     private int i;
     private String nome;
     private String senha;
