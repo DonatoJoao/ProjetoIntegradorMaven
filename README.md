@@ -35,7 +35,7 @@ Desenvolver um sistema para: gerar controle de colaboradores, cadastro de client
 Deverá seguir esses passos: 
 
 1. Criando as classes
-
+<details>
 <summary>**Agendamento**</summary>
 
 ```bash
