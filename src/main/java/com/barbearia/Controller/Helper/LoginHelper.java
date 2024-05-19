@@ -4,8 +4,8 @@
  */
 package com.barbearia.Controller.Helper;
 
+import com.barbearia.Model.Usuario;
 import com.barbearia.View.Login;
-import javax.swing.JPasswordField;
 
 /**
  *

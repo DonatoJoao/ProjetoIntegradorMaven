@@ -1,9 +1,8 @@
 package com.barbearia.Controller;
 
 import com.barbearia.Controller.Helper.LoginHelper;
-import com.barbearia.Controller.Helper.Usuario;
-import com.barbearia.Model.Cliente;
 import com.barbearia.Model.DAO.UsuarioDAO;
+import com.barbearia.Model.Usuario;
 import com.barbearia.View.Login;
 import com.barbearia.View.MenuPrincipal;
 
@@ -22,7 +21,7 @@ public class LoginController {
         Usuario usuario = helper.obterModelo();
         //Pesquisa usuario no Banco
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        Usuario usuarioAutenticado = usuarioDAO.selectPorNomeESenha(usuario); //falta implementar função na classe
+        Usuario usuarioAutenticado = usuarioDAO.selectPorNomeESenha(usuario);
         if (usuarioAutenticado != null){
             MenuPrincipal menu = new MenuPrincipal();
             menu.setVisible(true);
