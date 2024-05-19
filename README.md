@@ -36,7 +36,8 @@ Deverá seguir esses passos:
 
 1. Criando as classes
 <details>
-<summary> **Agendamento** </summary>
+
+<summary>Agendamento</summary>
 
 ```bash
  package com.barbearia.Model;
@@ -118,6 +119,7 @@ public class Agendamento {
     }
 }
 ```
+</details>
 **Cliente**
 
 ```bash
