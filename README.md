@@ -21,7 +21,7 @@ Desenvolver um sistema para: gerar controle de colaboradores, cadastro de client
 
 ## Arquitetura
 
-![arquitetura](C:\Users\igmf5\Documents\GitHub\UNIVESP\arquitetura.jpg)
+![arquitetura](https://github.com/DonatoJoao/ProjetoIntegradorMaven/blob/master/src/main/java/com/barbearia/View/imagens/arquitetura.jpg)
 
 ***
 ## Funcionamento 
