@@ -4,17 +4,24 @@
  */
 package com.barbearia.View;
 
+import com.barbearia.Controller.LoginController;
+
+import javax.swing.*;
+
 /**
  *
  * @author JOÃO
  */
 public class Login extends javax.swing.JFrame {
 
+    private final LoginController controller;
+
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        controller = new LoginController(this);
     }
 
     /**
@@ -26,6 +33,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         textUsuarioInput = new javax.swing.JTextArea();
         textSenha = new javax.swing.JPasswordField();
         jLabel4_usuario = new javax.swing.JLabel();
@@ -37,32 +45,47 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        textUsuarioInput.setColumns(20);
-        textUsuarioInput.setRows(5);
-        getContentPane().add(textUsuarioInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 330, 40));
+        jButton1.setBackground(new java.awt.Color(0, 255, 0));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton1.setText("Entrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 460, 330, -1));
 
+        textUsuarioInput.setColumns(20);
+        textUsuarioInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        textUsuarioInput.setRows(5);
+        getContentPane().add(textUsuarioInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 330, 30));
+
+        textSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textSenha.setText("jPasswordField1");
         textSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textSenhaActionPerformed(evt);
             }
         });
-        getContentPane().add(textSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 330, 40));
+        getContentPane().add(textSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 330, 30));
 
         jLabel4_usuario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4_usuario.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel4_usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4_usuario.setText("Usuário");
-        getContentPane().add(jLabel4_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 90, 40));
+        getContentPane().add(jLabel4_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 330, 40));
 
         jLabel5_senha.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel5_senha.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel5_senha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5_senha.setText("Senha");
-        getContentPane().add(jLabel5_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 390, 80, 40));
+        getContentPane().add(jLabel5_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 330, 40));
 
-        jLabel2_login.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel2_login.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2_login.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel2_login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2_login.setText("Login");
-        getContentPane().add(jLabel2_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 80, 50));
+        getContentPane().add(jLabel2_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 330, 50));
 
         jLabel3_painelLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/barbearia/View/imagens/icons/painel2.png"))); // NOI18N
         getContentPane().add(jLabel3_painelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
@@ -77,6 +100,14 @@ public class Login extends javax.swing.JFrame {
     private void textSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textSenhaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.controller.fizTarefa();
+        
+                
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,6 +145,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1_fundo;
     private javax.swing.JLabel jLabel2_login;
     private javax.swing.JLabel jLabel3_painelLogin;
@@ -122,4 +154,38 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField textSenha;
     private javax.swing.JTextArea textUsuarioInput;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     *
+     * @param mensagem
+     */
+    public void exibeMensagem(String mensagem){
+        JOptionPane.showMessageDialog(null, mensagem);
+    }
+
+    public void setTextSenha(JPasswordField textSenha) {
+        this.textSenha = textSenha;
+    }
+
+    public void setTextUsuarioInput(JTextArea textUsuarioInput) {
+        this.textUsuarioInput = textUsuarioInput;
+    }
+
+    public JPasswordField getTextSenha() {
+        return textSenha;
+    }
+
+    public JTextArea getTextUsuarioInput() {
+        return textUsuarioInput;
+    }
+
+    public JLabel getjLabel4_usuario() {
+        return jLabel4_usuario;
+    }
+
+    public JLabel getjLabel5_senha() {
+        return jLabel5_senha;
+    }
+    
+    
 }
