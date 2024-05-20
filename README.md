@@ -1,5 +1,5 @@
 # Projeto Integrador I - Univesp
-###  A Proposta do nosso projeto é...
+###  A Proposta desse projeto é desenvolver uma aplicação WEB para: cadastro de usuários (clientes e colaboradores), produtos, agendamentos, controle de horas dos colaboradores e planos de assinaturas dos clientes, utilizando linguagem de programação JAVA, um framework, banco de dados. 
 ***
 <div align="center">
  <img src="https://github.com/DonatoJoao/ProjetoIntegradorMaven/blob/master/src/main/resources/imagens/fundoMenuPrincipal.jpg" width="750"/>
@@ -9,7 +9,7 @@
  
 ## Introdução 
 
-Desenvolver uma aplicação web utilizando linguagem de programação JAVA, um framework, banco de dados e controle de versionamento com GitHub.
+Para esta aplicação utilizaremos a arquitetura de software MVC - Model-View-Controller, o desenvolvimento será em JAVA e a IDE usada será IntelliJ IDEA. O Banco de dados eescolhido foi...
 
 ****
 
