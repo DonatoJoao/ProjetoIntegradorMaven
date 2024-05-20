@@ -20,7 +20,7 @@ Desenvolver um sistema para: gerar controle de colaboradores, cadastro de client
 
 ## Arquitetura
 
-![arquitetura](https://github.com/DonatoJoao/ProjetoIntegradorMaven/blob/master/src/main/resources/imagens/arquitetura.jpg) align="center"
+![arquitetura](https://github.com/DonatoJoao/ProjetoIntegradorMaven/blob/master/src/main/resources/imagens/arquitetura.jpg)
 
 ***
 ## Funcionamento 
