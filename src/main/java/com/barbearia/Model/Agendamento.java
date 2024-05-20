@@ -28,6 +28,9 @@ public class Agendamento {
     public Agendamento() {
     }
 
+    public Agendamento(int id, Cliente cliente, Servico servico, float valor, String dataHora, String observacao) {
+    }
+
     public int getIdAgendamento() {
         return idAgendamento;
     }
