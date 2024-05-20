@@ -1030,6 +1030,19 @@ public class Cliente extends Usuario {
 ``` 
 </details>
 
+<details>
+
+<summary>Colaboradores</summary>
+
+```ruby
+
+package com.barbearia.Model.DAO;
+
+public class ColaboradorDAO {
+}
+``` 
+</details>
+
 
 
 
