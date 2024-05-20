@@ -1,7 +1,7 @@
 # Projeto Integrador I - Univesp
 ###  A Proposta desse projeto é desenvolver uma aplicação WEB para: cadastro de usuários (colaboradores e clientes), produtos, agendamentos, controle de horas dos colaboradores e planos de assinaturas dos clientes. 
 ***
-<div align="left">
+<div align="center">
  <img src="https://github.com/DonatoJoao/ProjetoIntegradorMaven/blob/master/src/main/java/com/barbearia/View/imagens/barbearia%20(2).jpg" width="450"/>
 </div>
 
