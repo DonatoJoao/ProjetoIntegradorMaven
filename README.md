@@ -245,12 +245,20 @@ public class Servico {
 ```ruby
 package com.barbearia.Model;
 
+import com.barbearia.Model.DAO.DAO;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-abstract class Usuario {
+public abstract class Usuario {
+    DAO dao = new DAO();
+    private Connection con;
+
     private int id;
+
     private String senha;
     private String cpf;
     private String nome;
@@ -258,7 +266,6 @@ abstract class Usuario {
     private String email;
     private Endereco endereco;
     private Date dataNascimento;
-
     public Usuario(int id, String cpf, String nome, String senha ,String telefone, String email, Endereco endereco, String dataNascimento) {
         this.id = id;
         this.cpf = cpf;
@@ -268,7 +275,7 @@ abstract class Usuario {
         this.email = email;
         this.endereco = endereco;
         try {
-            this.dataNascimento = new SimpleDateFormat("dd/MM/yyyy ").parse(dataNascimento);
+            this.dataNascimento = new SimpleDateFormat("dd/MM/yyyy").parse(dataNascimento);
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
@@ -315,7 +322,25 @@ abstract class Usuario {
     public Date getDataNascimento() {
         return dataNascimento;
     }
+
+    public Connection getCon() {
+        return con;
+    }
+    //Instancia que retorna se conectou ao banco de dados as informações inseridas.
+    private void status(){
+        try {
+            if (con == null){
+                System.out.println("Erro de coneção");
+            } else {
+                System.out.println("Banco de dados conectado");
+            }
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
+
 ```
 </details>
 
