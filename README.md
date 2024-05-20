@@ -1,16 +1,15 @@
 # Projeto Integrador I - Univesp
-###  A Proposta do nosso projeto é...
+###  A Proposta desse projeto é desenvolver uma aplicação WEB para: cadastro de usuários (colaboradores e clientes), produtos, agendamentos, controle de horas dos colaboradores e planos de assinaturas dos clientes. 
 ***
 <div align="center">
- <img src="https://github.com/DonatoJoao/ProjetoIntegradorMaven/blob/master/src/main/java/com/barbearia/View/imagens/fundoMenuPrincipal.jpg" alt="capa github" 
-  width="750"/>
+ <img src="https://github.com/DonatoJoao/ProjetoIntegradorMaven/blob/master/src/main/java/com/barbearia/View/imagens/barbearia%20(2).jpg" width="450"/>
 </div>
 
 ***
  
 ## Introdução 
 
-Desenvolver uma aplicação web utilizando linguagem de programação JAVA, um framework, banco de dados e controle de versionamento com GitHub.
+Para esta aplicação utilizaremos a arquitetura de software MVC - Model-View-Controller, o desenvolvimento será em JAVA e a IDE usada será IntelliJ IDEA. O Banco de dados eescolhido foi...
 
 ****
 
@@ -21,7 +20,9 @@ Desenvolver um sistema para: gerar controle de colaboradores, cadastro de client
 
 ## Arquitetura
 
-![arquitetura](https://github.com/DonatoJoao/ProjetoIntegradorMaven/blob/master/src/main/java/com/barbearia/View/imagens/arquitetura.jpg)
+<div align="center">
+ <img src="https://github.com/DonatoJoao/ProjetoIntegradorMaven/blob/master/src/main/resources/imagens/arquitetura.jpg" witdth="450"/>
+</div>
 
 ***
 ## Funcionamento 
@@ -31,7 +32,7 @@ Desenvolver um sistema para: gerar controle de colaboradores, cadastro de client
 Deverá seguir esses passos: 
 
 1. Criando as classes
-   
+
 <details>
  
 <summary>Agendamento</summary>
@@ -65,6 +66,9 @@ public class Agendamento {
     }
 
     public Agendamento() {
+    }
+
+    public Agendamento(int id, Cliente cliente, Servico servico, float valor, String dataHora, String observacao) {
     }
 
     public int getIdAgendamento() {
@@ -243,12 +247,20 @@ public class Servico {
 ```ruby
 package com.barbearia.Model;
 
+import com.barbearia.Model.DAO.DAO;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-abstract class Usuario {
+public abstract class Usuario {
+    DAO dao = new DAO();
+    private Connection con;
+
     private int id;
+
     private String senha;
     private String cpf;
     private String nome;
@@ -256,7 +268,6 @@ abstract class Usuario {
     private String email;
     private Endereco endereco;
     private Date dataNascimento;
-
     public Usuario(int id, String cpf, String nome, String senha ,String telefone, String email, Endereco endereco, String dataNascimento) {
         this.id = id;
         this.cpf = cpf;
@@ -266,7 +277,7 @@ abstract class Usuario {
         this.email = email;
         this.endereco = endereco;
         try {
-            this.dataNascimento = new SimpleDateFormat("dd/MM/yyyy ").parse(dataNascimento);
+            this.dataNascimento = new SimpleDateFormat("dd/MM/yyyy").parse(dataNascimento);
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
@@ -313,7 +324,25 @@ abstract class Usuario {
     public Date getDataNascimento() {
         return dataNascimento;
     }
+
+    public Connection getCon() {
+        return con;
+    }
+    //Instancia que retorna se conectou ao banco de dados as informações inseridas.
+    private void status(){
+        try {
+            if (con == null){
+                System.out.println("Erro de coneção");
+            } else {
+                System.out.println("Banco de dados conectado");
+            }
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
+
 ```
 </details>
 
@@ -826,7 +855,305 @@ public class MenuPrincipal extends javax.swing.JFrame {
 }
 ```
 </details>
-3. ...
+...
+
+3. Criando as classes DAO
+   
+<details>
+
+<summary>DAO</summary>
+
+```ruby
+package com.barbearia.Model.DAO;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DAO {
+
+    private Connection con;
+    private String driver = "com.mysql.cj.jdbc.Driver";
+    private String url = "jdbc:mysql://127.0.0.1:3306";
+    private String user = "root";
+    private String password = "root";
+
+    public Connection conectar() {
+        try {
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, user, password);
+            return con;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+}
+```
+</details>
+
+<details>
+
+<summary>Agendamento</summary>
+
+```ruby
+package com.barbearia.Model;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Agendamento {
+
+    private int idAgendamento;
+    private Cliente cliente;
+    private Servico servico;
+    private float valor;
+    private Date dataAgendamento;
+    private String observacao;
+
+    public Agendamento(int idAgendamento, Cliente cliente, Servico servico, float valor, String dataAgendamento) {
+        this.idAgendamento = idAgendamento;
+        this.cliente = cliente;
+        this.servico = servico;
+        this.valor = valor;
+        try {
+            this.dataAgendamento = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(dataAgendamento);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Agendamento() {
+    }
+
+    public Agendamento(int id, Cliente cliente, Servico servico, float valor, String dataHora, String observacao) {
+    }
+
+    public int getIdAgendamento() {
+        return idAgendamento;
+    }
+
+    public void setIdAgendamento(int idAgendamento) {
+        this.idAgendamento = idAgendamento;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
+    }
+
+    public float getValor() {
+        return valor;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
+
+    public Date getDataAgendamento() {
+        return dataAgendamento;
+    }
+
+    public void setDataAgendamento(Date dataAgendamento) {
+        this.dataAgendamento = dataAgendamento;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+}
+``` 
+</details>
+
+<details>
+
+<summary>Banco</summary>
+
+```ruby
+package com.barbearia.Model.DAO;
+
+import com.barbearia.Model.Agendamento;
+import com.barbearia.Model.Cliente;
+import com.barbearia.Model.Servico;
+import com.barbearia.Model.Usuario;
+
+import java.util.ArrayList;
+
+public class Banco {
+
+    public static ArrayList<Usuario> usuario;
+    public static ArrayList<Cliente> cliente;
+    public static ArrayList<Servico> servico;
+    public static ArrayList<Agendamento> agendamento;
+    public static void inicia(){
+        usuario = new ArrayList<Usuario>();
+        cliente = new ArrayList<Cliente>();
+        servico = new ArrayList<Servico>();
+        agendamento = new ArrayList<Agendamento>();
+    }
+}
+``` 
+</details>
+
+<details>
+
+<summary>Clientes</summary>
+
+```ruby
+package com.barbearia.Model;
+
+public class Cliente extends Usuario {
+    public Cliente(String cpf, String nome, String senha) {
+        super(cpf, nome, senha);
+    }
+
+
+    private float saldo;
+    private Plano plano;
+
+
+
+}
+``` 
+</details>
+
+<details>
+
+<summary>Colaboradores</summary>
+
+```ruby
+
+package com.barbearia.Model.DAO;
+
+public class ColaboradorDAO {
+}
+``` 
+</details>
+
+<details>
+
+<summary>Serviço</summary>
+
+```ruby
+package com.barbearia.Model.DAO;
+
+import com.barbearia.Model.Servico;
+
+import java.util.ArrayList;
+
+public class ServicoDAO {
+    public void insert(Servico servico){
+        Banco.servico.add(servico);
+    }
+    private boolean idSaoIguais(Servico servico, Servico servicoAComparar) {
+        return servico.getId() ==  servicoAComparar.getId();
+    }
+    public boolean update(Servico servico){
+
+        for (int i = 0; i < Banco.servico.size(); i++) {
+            if(idSaoIguais(Banco.servico.get(i),servico)){
+                Banco.servico.set(i, servico);
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean delete(Servico servico){
+        for (Servico servicoLista : Banco.servico) {
+            if(idSaoIguais(servicoLista,servico)){
+                Banco.servico.remove(servicoLista);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ArrayList<Servico> selectAll(){
+        return Banco.servico;
+    }
+
+
+}
+```
+ 
+</details>
+
+<details>
+
+<summary>Usuário</summary>
+
+```ruby
+
+package com.barbearia.Model.DAO;
+
+import com.barbearia.Model.Usuario;
+
+import java.util.ArrayList;
+
+public class UsuarioDAO {
+
+    public void insert(Usuario usuario){
+        Banco.usuario.add(usuario);
+    }
+    private boolean idSaoIguais(Usuario usuario, Usuario usuarioAComparar) {
+        return usuario.getId() ==  usuarioAComparar.getId();
+    }
+    public boolean update(Usuario usuario){
+
+        for (int i = 0; i < Banco.usuario.size(); i++) {
+            if(idSaoIguais(Banco.usuario.get(i),usuario)){
+                Banco.usuario.set(i, usuario);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean delete(Usuario usuario){
+        for (Usuario usuarioLista : Banco.usuario) {
+            if(idSaoIguais(usuarioLista,usuario)){
+                Banco.usuario.remove(usuarioLista);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ArrayList<Usuario> selectAll(){
+        return Banco.usuario;
+    }
+    private boolean nomeESenhaSaoIguais(Usuario usuario, Usuario usuarioAPesquisar) {
+        return usuario.getNome().equals(usuarioAPesquisar.getNome()) && usuario.getSenha().equals(usuarioAPesquisar.getSenha());
+    }
+    public Usuario selectPorNomeESenha(Usuario usuario){
+        for (Usuario usuarioLista : Banco.usuario) {
+            if(nomeESenhaSaoIguais(usuarioLista,usuario)){
+                return usuarioLista;
+            }
+        }
+        return null;
+    }
+}
+```
+ 
+</details>
+
+...
 
 ...
 
@@ -846,6 +1173,6 @@ Como trazer inovação tecnológica a fim de modernizar a gestão, controle e id
 ***
 ## Desenvolvedores do projeto
 
-| [<img src="https://media.licdn.com/dms/image/D4D35AQFVgxB9h8CBIw/profile-framedphoto-shrink_400_400/0/1698000832541?e=1716688800&v=beta&t=GQ_GUAH6hngNaD17SXrXRYXMPQVrMUucB5TSUdIlJzE" width=115><br><sub>Bruna Tokuno de Sousa</sub>](https://www.linkedin.com/in/bruna-tokuno-de-sousa-312802170?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) | [<img src="https://avatars.githubusercontent.com/u/51243178?v=4" width=115><br><sub>Gabriel Santos Silva</sub>](https://github.com/GabrielSantos10) | [<img src="https://avatars.githubusercontent.com/u/124359272?v=4" width=115><br><sub>Irati Gonçalves Maffra</sub>](https://github.com/IratiMaffra) | [<img src="https://avatars.githubusercontent.com/u/163658340?v=4" width=115><br><sub>Jediael da Silva Ferreira</sub>](https://github.com/Jedi-Ferreira) | [<img src="https://avatars.githubusercontent.com/u/83663822?v=4" width=115><br><sub>João Donato de Morais Pereira</sub>](https://github.com/DonatoJoao) | [<img src="" width=115><br><sub>Lays Motta de Albuquerque Lourenço</sub>](https://github.com/Lays) | [<img src="" width=115><br><sub>Sandro Roberto Alves Júnior</sub>](https://github.com/sandro) | [<img src="https://media.licdn.com/dms/image/D4D03AQHigoFkbveHVA/profile-displayphoto-shrink_400_400/0/1701190953083?e=1721260800&v=beta&t=2i4rKOqXNAIQ9G01f1y5JeCWxbh61dSu1i1Rj7fNeTE" width=115><br><sub>Thiago Lourenço Sales</sub>](https://www.linkedin.com/in/thiago-louren%C3%A7o-b166041b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) |
+| [<img src="https://media.licdn.com/dms/image/D4D35AQFVgxB9h8CBIw/profile-framedphoto-shrink_400_400/0/1698000832541?e=1716688800&v=beta&t=GQ_GUAH6hngNaD17SXrXRYXMPQVrMUucB5TSUdIlJzE" width=115><br><sub>Bruna Tokuno de Sousa</sub>](https://www.linkedin.com/in/bruna-tokuno-de-sousa-312802170?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) | [<img src="https://avatars.githubusercontent.com/u/51243178?v=4" width=115><br><sub>Gabriel Santos Silva</sub>](https://github.com/GabrielSantos10) | [<img src="https://avatars.githubusercontent.com/u/124359272?v=4" width=115><br><sub>Irati Gonçalves Maffra</sub>](https://github.com/IratiMaffra) | [<img src="https://avatars.githubusercontent.com/u/163658340?v=4" width=115><br><sub>Jediael da Silva Ferreira</sub>](https://github.com/Jedi-Ferreira) | [<img src="https://avatars.githubusercontent.com/u/83663822?v=4" width=115><br><sub>João Donato de Morais Pereira</sub>](https://github.com/DonatoJoao) | [<img src="https://avatars.githubusercontent.com/u/170274099?v=4" width=115><br><sub>Lays Motta de Albuquerque Lourenço</sub>](https://github.com/LaysMotta) | [<img src="" width=115><br><sub>Sandro Roberto Alves Júnior</sub>](https://github.com/sandro) | [<img src="https://media.licdn.com/dms/image/D4D03AQHigoFkbveHVA/profile-displayphoto-shrink_400_400/0/1701190953083?e=1721260800&v=beta&t=2i4rKOqXNAIQ9G01f1y5JeCWxbh61dSu1i1Rj7fNeTE" width=115><br><sub>Thiago Lourenço Sales</sub>](https://www.linkedin.com/in/thiago-louren%C3%A7o-b166041b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) |
 | :---: | :---: | :---: | :---: | :---: | :---: |:---: | :---: |
 
