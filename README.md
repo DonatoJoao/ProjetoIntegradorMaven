@@ -975,8 +975,29 @@ public class Agendamento {
         this.observacao = observacao;
     }
 }
-```
- 
+``` 
+</details>
+
+<details>
+
+<summary>Clientes</summary>
+
+```ruby
+package com.barbearia.Model;
+
+public class Cliente extends Usuario {
+    public Cliente(String cpf, String nome, String senha) {
+        super(cpf, nome, senha);
+    }
+
+
+    private float saldo;
+    private Plano plano;
+
+
+
+}
+``` 
 </details>
 
 
