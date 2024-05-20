@@ -89,20 +89,23 @@ public class Login extends javax.swing.JFrame {
         jLabel2_login.setText("Login");
         getContentPane().add(jLabel2_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 330, 50));
 
-        jLabel3_painelLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/barbearia/View/imagens/icons/painel2.png"))); // NOI18N
+        jLabel3_painelLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons/painel2.png"))); // NOI18N
         getContentPane().add(jLabel3_painelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
 
-        jLabel1_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/barbearia/View/imagens/fundoDesenho.jpg"))); // NOI18N
+        jLabel1_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundoDesenho.jpg"))); // NOI18N
         jLabel1_fundo.setText("Login");
         getContentPane().add(jLabel1_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 599, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void TextUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+    } 
     private void textSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textSenhaActionPerformed
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.controller.entrarNoSistema();

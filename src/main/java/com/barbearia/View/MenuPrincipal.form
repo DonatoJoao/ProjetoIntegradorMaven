@@ -12,7 +12,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/barbearia/View/imagens/icons/clienteIcon.png"/>
+                  <Image iconType="3" name="/imagens/icons/clienteIcon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cliente"/>
               </Properties>
@@ -23,7 +23,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/barbearia/View/imagens/icons/iconServico.png"/>
+                  <Image iconType="3" name="/imagens/icons/iconServico.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Servi&#xe7;o"/>
               </Properties>
@@ -82,7 +82,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/barbearia/View/imagens/fundoMenuPrincipal.jpg"/>
+          <Image iconType="3" name="/imagens/fundoMenuPrincipal.jpg"/>
         </Property>
       </Properties>
     </Component>

@@ -5,6 +5,8 @@ public class Cliente extends Usuario {
         super(cpf, nome, senha);
     }
 
+    public Cliente() {
+    }
 
     private float saldo;
     private Plano plano;

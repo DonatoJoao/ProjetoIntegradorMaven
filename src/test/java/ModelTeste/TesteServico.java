@@ -1,3 +1,5 @@
+package ModelTeste;
+
 import com.barbearia.Model.Servico;
 
 public class TesteServico {

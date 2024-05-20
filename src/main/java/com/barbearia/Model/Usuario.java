@@ -1,5 +1,4 @@
 package com.barbearia.Model;
-
 import com.barbearia.Model.DAO.DAO;
 
 import java.sql.Connection;
@@ -7,13 +6,10 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-public abstract class Usuario {
+public class Usuario {
     DAO dao = new DAO();
     private Connection con;
-
     private int id;
-
     private String senha;
     private String cpf;
     private String nome;
@@ -36,48 +32,58 @@ public abstract class Usuario {
         }
         ;
     }
-
     public Usuario() {
     }
-
     public Usuario(String cpf, String nome, String senha) {
         this.cpf = cpf;
         this.nome = nome;
         this.senha = senha;
     }
-
     public int getId() {
         return id;
     }
-
     public String getSenha() {
         return senha;
     }
-
     public String getCpf() {
         return cpf;
     }
-
     public String getNome() {
         return nome;
     }
-
     public String getTelefone() {
         return telefone;
     }
-
     public String getEmail() {
         return email;
     }
-
     public Endereco getEndereco() {
         return endereco;
     }
-
     public Date getDataNascimento() {
         return dataNascimento;
     }
-
+    public void setId(int id) {
+        this.id = id;
+    }
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
     public Connection getCon() {
         return con;
     }

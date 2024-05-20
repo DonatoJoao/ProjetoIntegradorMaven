@@ -12,15 +12,16 @@ import com.barbearia.View.Login;
  *
  * @author JOÃO
  */
-public class LoginHelper {
+public class LoginHelper implements IHelper {
     private final Login view;
 
     public LoginHelper(Login view) {
-        this.view = null;
+        this.view = view;
     }
+    @Override
     public Usuario obterModelo(){
         String nome = view.getTextUsuarioInput().getText();
-        String senha = String.valueOf(view.getTextSenha());
+        String senha = view.getTextSenha().getText();
         Usuario modelo = new Cliente("0", nome, senha);
         return modelo;
     }
@@ -32,6 +33,7 @@ public class LoginHelper {
         view.getTextUsuarioInput();
         view.getTextSenha().setText(senha);
     }
+    @Override
     public void limparTela(){
         view.getTextUsuarioInput().setText("");
         view.getTextSenha().setText("");

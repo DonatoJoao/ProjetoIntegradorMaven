@@ -1,13 +1,10 @@
 package com.barbearia.Model;
 
 import javax.swing.*;
-
 public class Servico {
-
     private int id;
     private String descricao;
     private float valor;
-
     public Servico(int id, String descricao, float valor) {
         this.id = id;
         this.descricao = descricao;
@@ -17,7 +14,6 @@ public class Servico {
     public Servico(float valor) {
         this.valor = valor;
     }
-
     public Servico() {
     }
 

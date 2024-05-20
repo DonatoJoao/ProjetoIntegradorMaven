@@ -8,7 +8,7 @@ import com.barbearia.View.MenuPrincipal;
 
 public class LoginController {
     private final Login view;
-    private LoginHelper helper;
+    private final LoginHelper helper;
     public LoginController(Login view) {
         this.view = view;
         this.helper = new LoginHelper(view);
@@ -18,8 +18,7 @@ public class LoginController {
 
     public void entrarNoSistema(){
         //Pegar usuario da View
-        Usuario usuario = helper.obterModelo();
-        //Pesquisa usuario no Banco
+        Usuario usuario = helper.obterModelo();    
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         Usuario usuarioAutenticado = usuarioDAO.selectPorNomeESenha(usuario);
         if (usuarioAutenticado != null){
