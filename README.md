@@ -38,7 +38,6 @@ Deverá seguir esses passos:
 <summary>Agenda</summary>
 
 ```ruby
-
 package com.barbearia.Controller;
 
 import com.barbearia.Controller.Helper.AgendaHelper;
@@ -95,6 +94,7 @@ public class AgendaController {
 
     }
 ```
+</details>
 
 <details>
 
@@ -143,7 +143,6 @@ public class LoginController {
 
 }
 ``` 
-</details>
 
 </details>
 
