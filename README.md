@@ -11,7 +11,7 @@
 
 Para esta aplicação utilizaremos a arquitetura de software MVC - Model-View-Controller, o desenvolvimento será em JAVA e a IDE usada será IntelliJ IDEA. O Banco de dados eescolhido foi...
 
-****
+***
 
 ## Objetivo
 
