@@ -1332,21 +1332,8 @@ public abstract class Usuario {
 ```
 </details>
 
-5. Criando Serviços
-
-<details>
-
-<summary>Correio</summary>
-
-```ruby
-package com.barbearia.Servico;
-
-public class Correio {
-}
-``` 
-</details>
-   
-7. Criando as Classes DAO
+ 
+5. Criando as Classes DAO
    
 <details>
 
@@ -1641,6 +1628,32 @@ public class UsuarioDAO {
 ``` 
 </details>
 
+6. Criando Serviços
+
+<details>
+
+<summary>Correio</summary>
+
+```ruby
+package com.barbearia.Servico;
+
+public class Correio {
+}
+``` 
+</details>
+
+<details>
+
+<summary>E-mail</summary>
+
+```ruby
+
+package com.barbearia.Servico;
+
+public class Email {
+}
+``` 
+</details>
 
 7. Criando o Banco de Dados
 
