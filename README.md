@@ -1992,6 +1992,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 ```
 </details>
 ***
+
 ## Organização
 
 Para realização do Projeto, o grupo se reunião, através do whatsApp, para levantar algumas ideias de projetos, dentre elas: desenvolvimento de um sistema de precificação e controle de estoque para comércios; desenvolver uma rede de prestadores de serviços de uma determinada região para que usuários cadastrados possam entrar em contato e contratar serviços de profissionais registrados na plataforma; e desenvolver um sistema para uma barbearia onde os clientes podem fazer assinaturas de planos, fazer agendamentos e o proprietário tenha mais controle de seus colaboradores e ter um mural de patrocinadores. Depois de discutido entre os participantes do grupo, foi escolhida a última ideia de projeto. 
