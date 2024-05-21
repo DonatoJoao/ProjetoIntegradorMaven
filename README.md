@@ -340,7 +340,7 @@ public class LoginHelper implements IHelper {
 ```  
  </details>
 
-3. Criando os Viewers
+3. Criando os Views
 4. Criando as Classes
 
 <details>
