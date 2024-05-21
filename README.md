@@ -1332,12 +1332,21 @@ public abstract class Usuario {
 ```
 </details>
 
-...
+5. Criando Serviços
 
+<details>
 
-...
+<summary>Correio</summary>
 
-6. Criando as classes DAO
+```ruby
+package com.barbearia.Servico;
+
+public class Correio {
+}
+``` 
+</details>
+   
+7. Criando as Classes DAO
    
 <details>
 
@@ -1629,11 +1638,10 @@ public class UsuarioDAO {
         return null;
     }
 }
-```
- 
+``` 
 </details>
 
-...
+
 7. Criando o Banco de Dados
 
 <details>
