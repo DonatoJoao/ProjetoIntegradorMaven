@@ -1,16 +1,15 @@
 # Projeto Integrador I - Univesp
+
 ###  A Proposta desse projeto é desenvolver uma aplicação WEB para: cadastro de usuários (colaboradores e clientes), produtos, agendamentos, controle de horas dos colaboradores e planos de assinaturas dos clientes. 
 ***
 <div align="center">
  <img src="https://github.com/DonatoJoao/ProjetoIntegradorMaven/blob/master/src/main/java/com/barbearia/View/imagens/barbearia%20(2).jpg" width="450"/>
 </div>
-
 ***
  
 ## Introdução 
 
 Para esta aplicação utilizaremos a arquitetura de software MVC - Model-View-Controller, o desenvolvimento será em JAVA e a IDE usada será IntelliJ IDEA. O Banco de dados eescolhido foi...
-
 ***
 
 ## Objetivo
@@ -23,20 +22,16 @@ Desenvolver um sistema para: gerar controle de colaboradores, cadastro de client
 <div align="center">
  <img src="https://github.com/DonatoJoao/ProjetoIntegradorMaven/blob/master/src/main/resources/imagens/arquitetura.jpg" witdth="450"/>
 </div>
-
 ***
-## Funcionamento 
 
-...
+## Funcionamento 
 
 Deverá seguir esses passos: 
 
 1. Criando as Controllers
 
 <details>
-
 <summary>Agenda</summary>
-
 ```ruby
 package com.barbearia.Controller;
 
@@ -48,7 +43,6 @@ import com.barbearia.Model.DAO.ClienteDAO;
 import com.barbearia.Model.DAO.ServicoDAO;
 import com.barbearia.Model.Servico;
 import com.barbearia.View.Agenda;
-
 import java.util.ArrayList;
 
 public class AgendaController {
@@ -59,7 +53,6 @@ public class AgendaController {
         this.view = view;
         this.helper = new AgendaHelper(view);
     }
-
     public void atualizaTabela(){
         AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
         ArrayList<Agendamento> agendamentos = agendamentoDAO.selectAll();
@@ -79,7 +72,6 @@ public class AgendaController {
         Servico servico = helper.obterServico();
         helper.setarValor(servico.getValor());
     }
-
     public void agendar(){
 //        Agendamento agendamento = helper.obterModelo();
 //        new AgendamentoDAO().insert(agendamento);
@@ -88,18 +80,13 @@ public class AgendaController {
 //
 //        atualizaTabela();
 //        helper.limpaTela();
-
-
     }
-
     }
 ```
 </details>
 
 <details>
-
 <summary>Login</summary>
-
 ```ruby
 
 package com.barbearia.Controller;
@@ -117,7 +104,6 @@ public class LoginController {
         this.view = view;
         this.helper = new LoginHelper(view);
     }
-
     //Toda lógica/regras de negócio deverá estar aqui
 
     public void entrarNoSistema(){
@@ -132,24 +118,18 @@ public class LoginController {
         } else{
             view.exibeMensagem("Usuário ou senha inválidos");
         }
-
     }
-    
+   
     public void fizTarefa(){
         System.out.println("Busquei algo");
         this.view.exibeMensagem("Executei tarefa");
     }
-
-
 }
 ``` 
-
 </details>
 
 <details>
-
 <summary>Menu Principal</summary>
-
 ```ruby
 
 package com.barbearia.Controller;
@@ -162,11 +142,9 @@ public class MenuPrincipalController {
     public MenuPrincipalController(MenuPrincipal view) {
         this.view = view;
     }
-
     public void navegarParaAgenda(){
         Agenda agenda = new Agenda();
         agenda.setVisible(true);
-
     }
 }
 ``` 
@@ -175,9 +153,7 @@ public class MenuPrincipalController {
 2. Criando os Controllers Helper
 
 <details>
-
 <summary>Agenda</summary>
-
 ```ruby
 
 package com.barbearia.Controller.Helper;
@@ -192,17 +168,13 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
 public class AgendaHelper implements IHelper {
-
     private final Agenda view;
-
     public AgendaHelper(Agenda view) {
         this.view = view;
     }
-
     public void preencherTabela(ArrayList<Agendamento> agendamentos){
         DefaultTableModel tableModel = (DefaultTableModel) view.getTableAgendamentos().getModel();
         tableModel.setNumRows(0);
-
         for (Agendamento agendamento : agendamentos){
             tableModel.addRow(new Object[]{
                     agendamento.getIdAgendamento(),
@@ -221,7 +193,6 @@ public class AgendaHelper implements IHelper {
     }
     public void preencherServicos(ArrayList<Servico> servicos){
         DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getjComboBoxServico().getModel();
-
         for (Servico servico : servicos) {
             comboBoxModel.addElement(servico);
         }
@@ -229,13 +200,11 @@ public class AgendaHelper implements IHelper {
     public void setarValor(float valor) {
        view.getTextValor().setText(valor+"");
     }
-
     public Servico obterServico() {
         return (Servico) view.getjComboBoxServico().getSelectedItem();
     }
     @Override
     public Agendamento obterModelo() {
-
         String idString = view.getTextId().getText();
         int id = Integer.parseInt(idString);
         Cliente cliente = obterCliente();
@@ -250,7 +219,6 @@ public class AgendaHelper implements IHelper {
         Agendamento agendamento = new Agendamento(id,cliente,servico,valor,dataHora, observacao);
         return agendamento;
     }
-
     @Override
     public void limparTela() {
         view.getTextId().setText("0");
@@ -258,10 +226,6 @@ public class AgendaHelper implements IHelper {
         view.getTextFormatedHora().setText("");
         view.getTextObservacao().setText("");
     }
-
-
-
-
     private Cliente obterCliente() {
         return (Cliente) view.getjComboBoxCliente().getSelectedItem();
     }
@@ -271,29 +235,21 @@ public class AgendaHelper implements IHelper {
 </details>
 
 <details>
-
 <summary>IHelper</summary>
-
 ```ruby
 
 package com.barbearia.Controller.Helper;
-
-
 
 public interface IHelper {
 
     public abstract Object obterModelo();
     public abstract void limparTela();
-
-
 }
 ```
  </details>
 
  <details>
-
 <summary>Login</summary>
-
 ```ruby
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -322,7 +278,7 @@ public class LoginHelper implements IHelper {
         Usuario modelo = new Cliente("0", nome, senha);
         return modelo;
     }
-    
+  
     public void setarModelo(Usuario modelo){
         String nome = modelo.getNome();
         String senha = modelo.getSenha();
@@ -335,7 +291,6 @@ public class LoginHelper implements IHelper {
         view.getTextUsuarioInput().setText("");
         view.getTextSenha().setText("");
     }
-
 }
 ```  
  </details>
@@ -343,9 +298,7 @@ public class LoginHelper implements IHelper {
 3. Criando os Views
 
 <details>
-
 <summary>Agenda</summary>
-
 ```ruby
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -592,78 +545,58 @@ public class Agenda extends javax.swing.JFrame {
     public JTable getTableAgendamentos() {
         return TableAgendamentos;
     }
-
     public JComboBox<String> getjComboBoxCliente() {
         return jComboBoxCliente;
     }
-
     public void setjComboBoxCliente(JComboBox<String> jComboBoxCliente) {
         this.jComboBoxCliente = jComboBoxCliente;
     }
-
     public JComboBox<String> getjComboBoxServico() {
         return jComboBoxServico;
     }
-
     public void setjComboBoxServico(JComboBox<String> jComboBoxServico) {
         this.jComboBoxServico = jComboBoxServico;
     }
-
     public JTextField getTextValor() {
         return TextValor;
     }
-
     public void setTextValor(JTextField TextValor) {
         this.TextValor = TextValor;
     }
-
     public JFormattedTextField getTextFormatedData() {
         return TextFormatedData;
     }
-
     public void setTextFormatedData(JFormattedTextField TextFormatedData) {
         this.TextFormatedData = TextFormatedData;
     }
-
     public JFormattedTextField getTextFormatedHora() {
         return TextFormatedHora;
     }
-
     public void setTextFormatedHora(JFormattedTextField TextFormatedHora) {
         this.TextFormatedHora = TextFormatedHora;
     }
-
     public JTextField getTextId() {
         return TextId;
     }
-
     public void setTextId(JTextField TextId) {
         this.TextId = TextId;
     }
-
     public JTextArea getTextObservacao() {
         return TextObservacao;
     }
-
     public void setTextObservacao(JTextArea TextObservacao) {
         this.TextObservacao = TextObservacao;
     }
-
     private void iniciar() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    
-
-
+  
 }
 ``` 
 </details>
 
 <details>
-
 <summary>Login</summary>
-
 ```ruby
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -776,8 +709,8 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.controller.entrarNoSistema();
-        
-                
+     
+               
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -834,40 +767,31 @@ public class Login extends javax.swing.JFrame {
     public void exibeMensagem(String mensagem){
         JOptionPane.showMessageDialog(null, mensagem);
     }
-
     public void setTextSenha(JPasswordField textSenha) {
         this.textSenha = textSenha;
     }
-
     public void setTextUsuarioInput(JTextArea textUsuarioInput) {
         this.textUsuarioInput = textUsuarioInput;
     }
-
     public JPasswordField getTextSenha() {
         return textSenha;
     }
-
     public JTextArea getTextUsuarioInput() {
         return textUsuarioInput;
     }
-
     public JLabel getjLabel4_usuario() {
         return jLabel4_usuario;
     }
-
     public JLabel getjLabel5_senha() {
         return jLabel5_senha;
     }
-    
-    
+     
 }
 ``` 
 </details>
 
 <details>
-
 <summary>Menu Principal</summary>
-
 ```ruby
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -1020,9 +944,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 4. Criando as Classes
 
 <details>
- 
 <summary>Agendamento</summary>
-
 ```ruby
 package com.barbearia.Model;
 
@@ -1050,57 +972,43 @@ public class Agendamento {
             throw new RuntimeException(e);
         }
     }
-
     public Agendamento() {
     }
-
     public Agendamento(int id, Cliente cliente, Servico servico, float valor, String dataHora, String observacao) {
     }
-
     public int getIdAgendamento() {
         return idAgendamento;
     }
-
     public void setIdAgendamento(int idAgendamento) {
         this.idAgendamento = idAgendamento;
     }
-
     public Cliente getCliente() {
         return cliente;
     }
-
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
     public Servico getServico() {
         return servico;
     }
-
     public void setServico(Servico servico) {
         this.servico = servico;
     }
-
     public float getValor() {
         return valor;
     }
-
     public void setValor(float valor) {
         this.valor = valor;
     }
-
     public Date getDataAgendamento() {
         return dataAgendamento;
     }
-
     public void setDataAgendamento(Date dataAgendamento) {
         this.dataAgendamento = dataAgendamento;
     }
-
     public String getObservacao() {
         return observacao;
     }
-
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
@@ -1109,9 +1017,7 @@ public class Agendamento {
 </details>
 
 <details>
- 
 <summary>Cliente</summary>
-
 ```ruby
 package com.barbearia.Model;
 
@@ -1119,18 +1025,14 @@ public class Cliente extends Usuario {
     public Cliente(String cpf, String nome, String senha) {
         super(cpf, nome, senha);
     }
-
     private float saldo;
     private Plano plano;
-
 }
 ```
 </details>
 
 <details>
-
 <summary>Colaborador</summary>
-
 ```ruby
 package com.barbearia.Model;
 
@@ -1145,9 +1047,7 @@ class Colaborador extends Usuario {
 </details>
 
 <details>
- 
 <summary>Endereço</summary>
-
 ```ruby
 package com.barbearia.Model;
 
@@ -1158,23 +1058,18 @@ class Endereco {
 </details>
 
 <details>
-
 <summary>Plano</summary>
-
 ```ruby
 package com.barbearia.Model;
 
 public class Plano {
-
 
 }
 ```
 </details>
 
 <details>
-
 <summary>Serviço</summary>
-
 ```ruby
 package com.barbearia.Model;
 
@@ -1191,34 +1086,26 @@ public class Servico {
         this.descricao = descricao;
         this.valor = valor;
     }
-
     public Servico(float valor) {
         this.valor = valor;
     }
-
     public Servico() {
     }
-
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getDescricao() {
         return descricao;
     }
-
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
     public float getValor() {
         return valor;
     }
-
     public void setValor(float valor) {
         this.valor = valor;
     }
@@ -1227,9 +1114,7 @@ public class Servico {
 </details>
 
 <details>
-
 <summary>Usuário</summary>
-
 ```ruby
 package com.barbearia.Model;
 
@@ -1278,39 +1163,30 @@ public abstract class Usuario {
         this.nome = nome;
         this.senha = senha;
     }
-
     public int getId() {
         return id;
     }
-
     public String getSenha() {
         return senha;
     }
-
     public String getCpf() {
         return cpf;
     }
-
     public String getNome() {
         return nome;
     }
-
     public String getTelefone() {
         return telefone;
     }
-
     public String getEmail() {
         return email;
     }
-
     public Endereco getEndereco() {
         return endereco;
     }
-
     public Date getDataNascimento() {
         return dataNascimento;
     }
-
     public Connection getCon() {
         return con;
     }
@@ -1331,14 +1207,11 @@ public abstract class Usuario {
 
 ```
 </details>
-
  
 5. Criando as Classes DAO
    
 <details>
-
 <summary>DAO</summary>
-
 ```ruby
 package com.barbearia.Model.DAO;
 
@@ -1368,9 +1241,7 @@ public class DAO {
 </details>
 
 <details>
-
 <summary>Agendamento</summary>
-
 ```ruby
 package com.barbearia.Model;
 
@@ -1398,57 +1269,43 @@ public class Agendamento {
             throw new RuntimeException(e);
         }
     }
-
     public Agendamento() {
     }
-
     public Agendamento(int id, Cliente cliente, Servico servico, float valor, String dataHora, String observacao) {
     }
-
     public int getIdAgendamento() {
         return idAgendamento;
     }
-
     public void setIdAgendamento(int idAgendamento) {
         this.idAgendamento = idAgendamento;
     }
-
     public Cliente getCliente() {
         return cliente;
     }
-
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
     public Servico getServico() {
         return servico;
     }
-
     public void setServico(Servico servico) {
         this.servico = servico;
     }
-
     public float getValor() {
         return valor;
     }
-
     public void setValor(float valor) {
         this.valor = valor;
     }
-
     public Date getDataAgendamento() {
         return dataAgendamento;
     }
-
     public void setDataAgendamento(Date dataAgendamento) {
         this.dataAgendamento = dataAgendamento;
     }
-
     public String getObservacao() {
         return observacao;
     }
-
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
@@ -1457,9 +1314,7 @@ public class Agendamento {
 </details>
 
 <details>
-
 <summary>Banco</summary>
-
 ```ruby
 package com.barbearia.Model.DAO;
 
@@ -1487,9 +1342,7 @@ public class Banco {
 </details>
 
 <details>
-
 <summary>Clientes</summary>
-
 ```ruby
 package com.barbearia.Model;
 
@@ -1497,21 +1350,15 @@ public class Cliente extends Usuario {
     public Cliente(String cpf, String nome, String senha) {
         super(cpf, nome, senha);
     }
-
-
     private float saldo;
     private Plano plano;
-
-
 
 }
 ``` 
 </details>
 
 <details>
-
 <summary>Colaboradores</summary>
-
 ```ruby
 
 package com.barbearia.Model.DAO;
@@ -1522,14 +1369,11 @@ public class ColaboradorDAO {
 </details>
 
 <details>
-
 <summary>Serviço</summary>
-
 ```ruby
 package com.barbearia.Model.DAO;
 
 import com.barbearia.Model.Servico;
-
 import java.util.ArrayList;
 
 public class ServicoDAO {
@@ -1562,25 +1406,18 @@ public class ServicoDAO {
     public ArrayList<Servico> selectAll(){
         return Banco.servico;
     }
-
-
 }
-```
- 
+``` 
 </details>
 
 <details>
-
 <summary>Usuário</summary>
-
 ```ruby
 
 package com.barbearia.Model.DAO;
 
 import com.barbearia.Model.Usuario;
-
 import java.util.ArrayList;
-
 public class UsuarioDAO {
 
     public void insert(Usuario usuario){
@@ -1631,9 +1468,7 @@ public class UsuarioDAO {
 6. Criando Serviços
 
 <details>
-
 <summary>Correio</summary>
-
 ```ruby
 package com.barbearia.Servico;
 
@@ -1643,9 +1478,7 @@ public class Correio {
 </details>
 
 <details>
-
 <summary>E-mail</summary>
-
 ```ruby
 
 package com.barbearia.Servico;
@@ -1658,9 +1491,7 @@ public class Email {
 7. Criando o Banco de Dados
 
 <details>
-
 <summary>Agenda</summary>
-
 ```ruby
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -1891,9 +1722,7 @@ public class Agenda extends javax.swing.JFrame {
 </details>
 
 <details>
-
 <summary>Login</summary>
-
 ```ruby
 
 /*
@@ -2025,9 +1854,7 @@ public class Login extends javax.swing.JFrame {
 </details>
 
 <details>
- 
 <summary>Menu Principal</summary>
-
 ```ruby
 
 /*
@@ -2162,22 +1989,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 }
 ```
 </details>
-...
-
-****
+***
 ## Organização
 
 Para realização do Projeto, o grupo se reunião, através do whatsApp, para levantar algumas ideias de projetos, dentre elas: desenvolvimento de um sistema de precificação e controle de estoque para comércios; desenvolver uma rede de prestadores de serviços de uma determinada região para que usuários cadastrados possam entrar em contato e contratar serviços de profissionais registrados na plataforma; e desenvolver um sistema para uma barbearia onde os clientes podem fazer assinaturas de planos, fazer agendamentos e o proprietário tenha mais controle de seus colaboradores e ter um mural de patrocinadores. Depois de discutido entre os participantes do grupo, foi escolhida a última ideia de projeto. 
-
 *** 
 
 ## Dificuldades Conhecidas
 
 Como trazer inovação tecnológica a fim de modernizar a gestão, controle e ideias de negócio para este empreendimento. 
-
-
-
 ***
+
 ## Desenvolvedores do projeto
 
 | [<img src="https://media.licdn.com/dms/image/D4D35AQFVgxB9h8CBIw/profile-framedphoto-shrink_400_400/0/1698000832541?e=1716688800&v=beta&t=GQ_GUAH6hngNaD17SXrXRYXMPQVrMUucB5TSUdIlJzE" width=115><br><sub>Bruna Tokuno de Sousa</sub>](https://www.linkedin.com/in/bruna-tokuno-de-sousa-312802170?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) | [<img src="https://avatars.githubusercontent.com/u/51243178?v=4" width=115><br><sub>Gabriel Santos Silva</sub>](https://github.com/GabrielSantos10) | [<img src="https://avatars.githubusercontent.com/u/124359272?v=4" width=115><br><sub>Irati Gonçalves Maffra</sub>](https://github.com/IratiMaffra) | [<img src="https://avatars.githubusercontent.com/u/163658340?v=4" width=115><br><sub>Jediael da Silva Ferreira</sub>](https://github.com/Jedi-Ferreira) | [<img src="https://avatars.githubusercontent.com/u/83663822?v=4" width=115><br><sub>João Donato de Morais Pereira</sub>](https://github.com/DonatoJoao) | [<img src="https://avatars.githubusercontent.com/u/170274099?v=4" width=115><br><sub>Lays Motta de Albuquerque Lourenço</sub>](https://github.com/LaysMotta) | [<img src="https://avatars.githubusercontent.com/u/88247357?v=4" width=115><br><sub>Sandro Roberto Alves Júnior</sub>](https://github.com/SandroAlvez) | [<img src="https://media.licdn.com/dms/image/D4D03AQHigoFkbveHVA/profile-displayphoto-shrink_400_400/0/1701190953083?e=1721260800&v=beta&t=2i4rKOqXNAIQ9G01f1y5JeCWxbh61dSu1i1Rj7fNeTE" width=115><br><sub>Thiago Lourenço Sales</sub>](https://www.linkedin.com/in/thiago-louren%C3%A7o-b166041b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) |
