@@ -661,7 +661,7 @@ public abstract class Usuario {
 
 ...
 
-3. Criando as classes DAO
+6. Criando as classes DAO
    
 <details>
 
@@ -958,7 +958,7 @@ public class UsuarioDAO {
 </details>
 
 ...
-2. Criando o Banco de Dados
+7. Criando o Banco de Dados
 
 <details>
 
