@@ -658,6 +658,306 @@ public abstract class Usuario {
 
 ...
 
+
+...
+
+3. Criando as classes DAO
+   
+<details>
+
+<summary>DAO</summary>
+
+```ruby
+package com.barbearia.Model.DAO;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DAO {
+
+    private Connection con;
+    private String driver = "com.mysql.cj.jdbc.Driver";
+    private String url = "jdbc:mysql://127.0.0.1:3306";
+    private String user = "root";
+    private String password = "root";
+
+    public Connection conectar() {
+        try {
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, user, password);
+            return con;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+}
+```
+</details>
+
+<details>
+
+<summary>Agendamento</summary>
+
+```ruby
+package com.barbearia.Model;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Agendamento {
+
+    private int idAgendamento;
+    private Cliente cliente;
+    private Servico servico;
+    private float valor;
+    private Date dataAgendamento;
+    private String observacao;
+
+    public Agendamento(int idAgendamento, Cliente cliente, Servico servico, float valor, String dataAgendamento) {
+        this.idAgendamento = idAgendamento;
+        this.cliente = cliente;
+        this.servico = servico;
+        this.valor = valor;
+        try {
+            this.dataAgendamento = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(dataAgendamento);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Agendamento() {
+    }
+
+    public Agendamento(int id, Cliente cliente, Servico servico, float valor, String dataHora, String observacao) {
+    }
+
+    public int getIdAgendamento() {
+        return idAgendamento;
+    }
+
+    public void setIdAgendamento(int idAgendamento) {
+        this.idAgendamento = idAgendamento;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
+    }
+
+    public float getValor() {
+        return valor;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
+
+    public Date getDataAgendamento() {
+        return dataAgendamento;
+    }
+
+    public void setDataAgendamento(Date dataAgendamento) {
+        this.dataAgendamento = dataAgendamento;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+}
+``` 
+</details>
+
+<details>
+
+<summary>Banco</summary>
+
+```ruby
+package com.barbearia.Model.DAO;
+
+import com.barbearia.Model.Agendamento;
+import com.barbearia.Model.Cliente;
+import com.barbearia.Model.Servico;
+import com.barbearia.Model.Usuario;
+
+import java.util.ArrayList;
+
+public class Banco {
+
+    public static ArrayList<Usuario> usuario;
+    public static ArrayList<Cliente> cliente;
+    public static ArrayList<Servico> servico;
+    public static ArrayList<Agendamento> agendamento;
+    public static void inicia(){
+        usuario = new ArrayList<Usuario>();
+        cliente = new ArrayList<Cliente>();
+        servico = new ArrayList<Servico>();
+        agendamento = new ArrayList<Agendamento>();
+    }
+}
+``` 
+</details>
+
+<details>
+
+<summary>Clientes</summary>
+
+```ruby
+package com.barbearia.Model;
+
+public class Cliente extends Usuario {
+    public Cliente(String cpf, String nome, String senha) {
+        super(cpf, nome, senha);
+    }
+
+
+    private float saldo;
+    private Plano plano;
+
+
+
+}
+``` 
+</details>
+
+<details>
+
+<summary>Colaboradores</summary>
+
+```ruby
+
+package com.barbearia.Model.DAO;
+
+public class ColaboradorDAO {
+}
+``` 
+</details>
+
+<details>
+
+<summary>Serviço</summary>
+
+```ruby
+package com.barbearia.Model.DAO;
+
+import com.barbearia.Model.Servico;
+
+import java.util.ArrayList;
+
+public class ServicoDAO {
+    public void insert(Servico servico){
+        Banco.servico.add(servico);
+    }
+    private boolean idSaoIguais(Servico servico, Servico servicoAComparar) {
+        return servico.getId() ==  servicoAComparar.getId();
+    }
+    public boolean update(Servico servico){
+
+        for (int i = 0; i < Banco.servico.size(); i++) {
+            if(idSaoIguais(Banco.servico.get(i),servico)){
+                Banco.servico.set(i, servico);
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean delete(Servico servico){
+        for (Servico servicoLista : Banco.servico) {
+            if(idSaoIguais(servicoLista,servico)){
+                Banco.servico.remove(servicoLista);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ArrayList<Servico> selectAll(){
+        return Banco.servico;
+    }
+
+
+}
+```
+ 
+</details>
+
+<details>
+
+<summary>Usuário</summary>
+
+```ruby
+
+package com.barbearia.Model.DAO;
+
+import com.barbearia.Model.Usuario;
+
+import java.util.ArrayList;
+
+public class UsuarioDAO {
+
+    public void insert(Usuario usuario){
+        Banco.usuario.add(usuario);
+    }
+    private boolean idSaoIguais(Usuario usuario, Usuario usuarioAComparar) {
+        return usuario.getId() ==  usuarioAComparar.getId();
+    }
+    public boolean update(Usuario usuario){
+
+        for (int i = 0; i < Banco.usuario.size(); i++) {
+            if(idSaoIguais(Banco.usuario.get(i),usuario)){
+                Banco.usuario.set(i, usuario);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean delete(Usuario usuario){
+        for (Usuario usuarioLista : Banco.usuario) {
+            if(idSaoIguais(usuarioLista,usuario)){
+                Banco.usuario.remove(usuarioLista);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ArrayList<Usuario> selectAll(){
+        return Banco.usuario;
+    }
+    private boolean nomeESenhaSaoIguais(Usuario usuario, Usuario usuarioAPesquisar) {
+        return usuario.getNome().equals(usuarioAPesquisar.getNome()) && usuario.getSenha().equals(usuarioAPesquisar.getSenha());
+    }
+    public Usuario selectPorNomeESenha(Usuario usuario){
+        for (Usuario usuarioLista : Banco.usuario) {
+            if(nomeESenhaSaoIguais(usuarioLista,usuario)){
+                return usuarioLista;
+            }
+        }
+        return null;
+    }
+}
+```
+ 
+</details>
+
+...
 2. Criando o Banco de Dados
 
 <details>
@@ -1165,306 +1465,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 }
 ```
 </details>
-...
-
-3. Criando as classes DAO
-   
-<details>
-
-<summary>DAO</summary>
-
-```ruby
-package com.barbearia.Model.DAO;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-
-public class DAO {
-
-    private Connection con;
-    private String driver = "com.mysql.cj.jdbc.Driver";
-    private String url = "jdbc:mysql://127.0.0.1:3306";
-    private String user = "root";
-    private String password = "root";
-
-    public Connection conectar() {
-        try {
-            Class.forName(driver);
-            con = DriverManager.getConnection(url, user, password);
-            return con;
-        } catch (Exception e) {
-            System.out.println(e);
-            return null;
-        }
-    }
-}
-```
-</details>
-
-<details>
-
-<summary>Agendamento</summary>
-
-```ruby
-package com.barbearia.Model;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-public class Agendamento {
-
-    private int idAgendamento;
-    private Cliente cliente;
-    private Servico servico;
-    private float valor;
-    private Date dataAgendamento;
-    private String observacao;
-
-    public Agendamento(int idAgendamento, Cliente cliente, Servico servico, float valor, String dataAgendamento) {
-        this.idAgendamento = idAgendamento;
-        this.cliente = cliente;
-        this.servico = servico;
-        this.valor = valor;
-        try {
-            this.dataAgendamento = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(dataAgendamento);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public Agendamento() {
-    }
-
-    public Agendamento(int id, Cliente cliente, Servico servico, float valor, String dataHora, String observacao) {
-    }
-
-    public int getIdAgendamento() {
-        return idAgendamento;
-    }
-
-    public void setIdAgendamento(int idAgendamento) {
-        this.idAgendamento = idAgendamento;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Servico getServico() {
-        return servico;
-    }
-
-    public void setServico(Servico servico) {
-        this.servico = servico;
-    }
-
-    public float getValor() {
-        return valor;
-    }
-
-    public void setValor(float valor) {
-        this.valor = valor;
-    }
-
-    public Date getDataAgendamento() {
-        return dataAgendamento;
-    }
-
-    public void setDataAgendamento(Date dataAgendamento) {
-        this.dataAgendamento = dataAgendamento;
-    }
-
-    public String getObservacao() {
-        return observacao;
-    }
-
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
-    }
-}
-``` 
-</details>
-
-<details>
-
-<summary>Banco</summary>
-
-```ruby
-package com.barbearia.Model.DAO;
-
-import com.barbearia.Model.Agendamento;
-import com.barbearia.Model.Cliente;
-import com.barbearia.Model.Servico;
-import com.barbearia.Model.Usuario;
-
-import java.util.ArrayList;
-
-public class Banco {
-
-    public static ArrayList<Usuario> usuario;
-    public static ArrayList<Cliente> cliente;
-    public static ArrayList<Servico> servico;
-    public static ArrayList<Agendamento> agendamento;
-    public static void inicia(){
-        usuario = new ArrayList<Usuario>();
-        cliente = new ArrayList<Cliente>();
-        servico = new ArrayList<Servico>();
-        agendamento = new ArrayList<Agendamento>();
-    }
-}
-``` 
-</details>
-
-<details>
-
-<summary>Clientes</summary>
-
-```ruby
-package com.barbearia.Model;
-
-public class Cliente extends Usuario {
-    public Cliente(String cpf, String nome, String senha) {
-        super(cpf, nome, senha);
-    }
-
-
-    private float saldo;
-    private Plano plano;
-
-
-
-}
-``` 
-</details>
-
-<details>
-
-<summary>Colaboradores</summary>
-
-```ruby
-
-package com.barbearia.Model.DAO;
-
-public class ColaboradorDAO {
-}
-``` 
-</details>
-
-<details>
-
-<summary>Serviço</summary>
-
-```ruby
-package com.barbearia.Model.DAO;
-
-import com.barbearia.Model.Servico;
-
-import java.util.ArrayList;
-
-public class ServicoDAO {
-    public void insert(Servico servico){
-        Banco.servico.add(servico);
-    }
-    private boolean idSaoIguais(Servico servico, Servico servicoAComparar) {
-        return servico.getId() ==  servicoAComparar.getId();
-    }
-    public boolean update(Servico servico){
-
-        for (int i = 0; i < Banco.servico.size(); i++) {
-            if(idSaoIguais(Banco.servico.get(i),servico)){
-                Banco.servico.set(i, servico);
-                return true;
-            }
-        }
-        return false;
-    }
-    public boolean delete(Servico servico){
-        for (Servico servicoLista : Banco.servico) {
-            if(idSaoIguais(servicoLista,servico)){
-                Banco.servico.remove(servicoLista);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public ArrayList<Servico> selectAll(){
-        return Banco.servico;
-    }
-
-
-}
-```
- 
-</details>
-
-<details>
-
-<summary>Usuário</summary>
-
-```ruby
-
-package com.barbearia.Model.DAO;
-
-import com.barbearia.Model.Usuario;
-
-import java.util.ArrayList;
-
-public class UsuarioDAO {
-
-    public void insert(Usuario usuario){
-        Banco.usuario.add(usuario);
-    }
-    private boolean idSaoIguais(Usuario usuario, Usuario usuarioAComparar) {
-        return usuario.getId() ==  usuarioAComparar.getId();
-    }
-    public boolean update(Usuario usuario){
-
-        for (int i = 0; i < Banco.usuario.size(); i++) {
-            if(idSaoIguais(Banco.usuario.get(i),usuario)){
-                Banco.usuario.set(i, usuario);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean delete(Usuario usuario){
-        for (Usuario usuarioLista : Banco.usuario) {
-            if(idSaoIguais(usuarioLista,usuario)){
-                Banco.usuario.remove(usuarioLista);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public ArrayList<Usuario> selectAll(){
-        return Banco.usuario;
-    }
-    private boolean nomeESenhaSaoIguais(Usuario usuario, Usuario usuarioAPesquisar) {
-        return usuario.getNome().equals(usuarioAPesquisar.getNome()) && usuario.getSenha().equals(usuarioAPesquisar.getSenha());
-    }
-    public Usuario selectPorNomeESenha(Usuario usuario){
-        for (Usuario usuarioLista : Banco.usuario) {
-            if(nomeESenhaSaoIguais(usuarioLista,usuario)){
-                return usuarioLista;
-            }
-        }
-        return null;
-    }
-}
-```
- 
-</details>
-
-...
-
 ...
 
 ****
