@@ -32,6 +32,9 @@ Desenvolver um sistema para: gerar controle de colaboradores, cadastro de client
 Deverá seguir esses passos: 
 
 1. Criando as classes
+2. Criando os Controllers
+3. Criando os Viewers
+4. Criando as Classes
 
 <details>
  
