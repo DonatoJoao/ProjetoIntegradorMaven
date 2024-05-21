@@ -5,7 +5,8 @@
 <div align="center">
  <img src="https://github.com/DonatoJoao/ProjetoIntegradorMaven/blob/master/src/main/java/com/barbearia/View/imagens/barbearia%20(2).jpg" width="450"/>
 </div>
-****
+
+***
  
 ## Introdução 
 
