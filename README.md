@@ -270,6 +270,27 @@ public class AgendaHelper implements IHelper {
  
 </details>
 
+<details>
+
+<summary>IHelper</summary>
+
+```ruby
+
+package com.barbearia.Controller.Helper;
+
+
+
+public interface IHelper {
+
+    public abstract Object obterModelo();
+    public abstract void limparTela();
+
+
+}
+```
+ 
+</details>
+
 3. Criando os Viewers
 4. Criando as Classes
 
