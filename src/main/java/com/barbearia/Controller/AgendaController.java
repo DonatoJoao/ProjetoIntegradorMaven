@@ -3,10 +3,11 @@ package com.barbearia.Controller;
 import com.barbearia.Controller.Helper.AgendaHelper;
 import com.barbearia.Model.Agendamento;
 import com.barbearia.Model.Cliente;
-import com.barbearia.Model.DAO.AgendamentoDAO;
-import com.barbearia.Model.DAO.ClienteDAO;
-import com.barbearia.Model.DAO.ServicoDAO;
+import com.barbearia.Model.DAO.Refatorar.AgendamentoDAO;
+import com.barbearia.Model.DAO.Refatorar.ClienteDAO;
+import com.barbearia.Model.DAO.Refatorar.ServicoDAO;
 import com.barbearia.Model.Servico;
+import com.barbearia.Servico.Correio;
 import com.barbearia.View.Agenda;
 
 import java.util.ArrayList;
@@ -41,13 +42,13 @@ public class AgendaController {
     }
 
     public void agendar(){
-//        Agendamento agendamento = helper.obterModelo();
-//        new AgendamentoDAO().insert(agendamento);
-//        Correio correio = new Correio();
-//        correio.NotificarPorEmail(agendamento);
-//
-//        atualizaTabela();
-//        helper.limpaTela();
+        Agendamento agendamento = helper.obterModelo();
+        new AgendamentoDAO().insert(agendamento);
+        Correio correio = new Correio();
+        correio.NotificarPorEmail(agendamento);
+
+        atualizaTabela();
+        helper.limparTela();
 
 
     }

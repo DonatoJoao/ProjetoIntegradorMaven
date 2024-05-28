@@ -1,4 +1,4 @@
-package com.barbearia.Model.DAO;
+package com.barbearia.Model.DAO.Refatorar;
 
 import com.barbearia.Model.Cliente;
 
@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class ClienteDAO {
     public void insert(Cliente cliente){
         Banco.cliente.add(cliente);
+
     }
     private boolean idSaoIguais(Cliente cliente, Cliente clienteAComparar){
         return cliente.getId() == clienteAComparar.getId();

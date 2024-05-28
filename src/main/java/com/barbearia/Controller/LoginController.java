@@ -1,7 +1,7 @@
 package com.barbearia.Controller;
 
 import com.barbearia.Controller.Helper.LoginHelper;
-import com.barbearia.Model.DAO.UsuarioDAO;
+import com.barbearia.Model.DAO.Refatorar.UsuarioDAO;
 import com.barbearia.Model.Usuario;
 import com.barbearia.View.Login;
 import com.barbearia.View.MenuPrincipal;

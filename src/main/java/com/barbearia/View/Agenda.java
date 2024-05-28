@@ -65,6 +65,11 @@ public class Agenda extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 220, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -103,7 +108,6 @@ public class Agenda extends javax.swing.JFrame {
         jLabel4.setText("Data");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 40, 30));
 
-        jTextField4.setText("jTextField4");
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -111,7 +115,6 @@ public class Agenda extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 220, 30));
 
-        jTextField2.setText("jTextField2");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -119,7 +122,11 @@ public class Agenda extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 220, 30));
 
-        jTextField3.setText("jTextField3");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 322, 220, 30));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,6 +148,11 @@ public class Agenda extends javax.swing.JFrame {
         getContentPane().add(textArea_Observacoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 470, 250));
 
         jComboBox1_Clientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funalo", "Ciclano", "Beltrano", "Alguém" }));
+        jComboBox1_Clientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1_ClientesActionPerformed(evt);
+            }
+        });
         getContentPane().add(jComboBox1_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 220, 30));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -178,6 +190,18 @@ public class Agenda extends javax.swing.JFrame {
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox1_ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1_ClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1_ClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,6 +261,12 @@ public class Agenda extends javax.swing.JFrame {
     private java.awt.TextArea textArea_Observacoes;
     // End of variables declaration//GEN-END:variables
 
+      private void iniciar() {
+        this.controller.atualizaTabela();
+       this.controller.atualizaCliente();
+       this.controller.atualizaServico();
+       this.controller.atualizaValor();
+    }
     public void setTableAgendamentos(JTable TableAgendamentos) {
         this.TableAgendamentos = TableAgendamentos;
     }
@@ -300,9 +330,7 @@ public class Agenda extends javax.swing.JFrame {
         this.TextObservacao = TextObservacao;
     }
 
-    private void iniciar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+  
 
     
 

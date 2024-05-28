@@ -5,7 +5,7 @@
 package com.barbearia.View;
 
 import com.barbearia.Controller.LoginController;
-import com.barbearia.Model.DAO.Banco;
+import com.barbearia.Model.DAO.Refatorar.Banco;
 
 import javax.swing.*;
 
@@ -60,28 +60,27 @@ public class Login extends javax.swing.JFrame {
         textUsuarioInput.setColumns(20);
         textUsuarioInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textUsuarioInput.setRows(5);
-        getContentPane().add(textUsuarioInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 330, 30));
+        getContentPane().add(textUsuarioInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 330, 40));
 
         textSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        textSenha.setText("jPasswordField1");
         textSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textSenhaActionPerformed(evt);
             }
         });
-        getContentPane().add(textSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 330, 30));
+        getContentPane().add(textSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 330, 40));
 
         jLabel4_usuario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4_usuario.setForeground(new java.awt.Color(242, 242, 242));
         jLabel4_usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4_usuario.setText("Usuário");
-        getContentPane().add(jLabel4_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 330, 40));
+        getContentPane().add(jLabel4_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 330, 40));
 
         jLabel5_senha.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel5_senha.setForeground(new java.awt.Color(242, 242, 242));
         jLabel5_senha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5_senha.setText("Senha");
-        getContentPane().add(jLabel5_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 330, 40));
+        getContentPane().add(jLabel5_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 330, 40));
 
         jLabel2_login.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2_login.setForeground(new java.awt.Color(242, 242, 242));

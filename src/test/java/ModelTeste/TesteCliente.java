@@ -13,7 +13,7 @@ public class TesteCliente {
         System.out.println(cliente2.getNome());
         System.out.println(cliente2.getSenha());
         Cliente cliente3 = new Cliente("123456789", "Fulano", "abcd");
-
+        System.out.println(cliente3.getCpf());
 
 
 

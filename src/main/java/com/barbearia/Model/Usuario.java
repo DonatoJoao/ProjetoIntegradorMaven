@@ -7,8 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 public class Usuario {
-    DAO dao = new DAO();
-    private Connection con;
+    //arrumar classe novamente como abstract
     private int id;
     private String senha;
     private String cpf;
@@ -84,21 +83,10 @@ public class Usuario {
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-    public Connection getCon() {
-        return con;
-    }
-    //Instancia que retorna se conectou ao banco de dados as informações inseridas.
-    private void status(){
-        try {
-            if (con == null){
-                System.out.println("Erro de coneção");
-            } else {
-                System.out.println("Banco de dados conectado");
-            }
-            con.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
+
+
+
+
 }
 

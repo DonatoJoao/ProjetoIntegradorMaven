@@ -37,6 +37,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuOperacao = new javax.swing.JMenu();
+        MenuItemAgenda = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,7 +61,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuCadastro);
 
-        jMenuOperacao.setText("Operação");
+        jMenuOperacao.setText(" Operação");
+        jMenuOperacao.setToolTipText("");
+
+        MenuItemAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons/agenda-icon.png"))); // NOI18N
+        MenuItemAgenda.setText("Agenda");
+        MenuItemAgenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemAgendaActionPerformed(evt);
+            }
+        });
+        jMenuOperacao.add(MenuItemAgenda);
+
         jMenuBar1.add(jMenuOperacao);
 
         jMenu1.setText("Relatório");
@@ -88,15 +100,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void MenuItemAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemAgendaActionPerformed
+        // TODO add your handling code here:
+        this.controller.navegarParaAgenda();
+    }//GEN-LAST:event_MenuItemAgendaActionPerformed
     private void MenuItemClienteActionPerformed(java.awt.event.ActionEvent evt){
         // TODO add your handling code here:
     }
     private void MenuItemRelatorioActionsperformed(java.awt.event.ActionEvent evt){
         // TODO add your handling code here:
     }
-    private void MenuItemAgendaActionPerformed(java.awt.event.ActionEvent evt){
-        this.controller.navegarParaAgenda();
-    }
+    
 
     /**
      * @param args the command line arguments
@@ -134,6 +149,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuItemAgenda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;

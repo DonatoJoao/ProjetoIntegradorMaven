@@ -17,8 +17,8 @@ public class TesteEndereco {
         Endereco enderecoJoao = new Endereco();
         clienteJoao.setEndereco(enderecoJoao);
 
-        enderecoJoao.setCidade("Itanhaém");
-        System.out.println(clienteJoao.getEndereco().getCidade());
+        enderecoJoao.setBairro("Centro");
+        System.out.println(clienteJoao.getEndereco().getBairro());
 
     }
 }

@@ -1,4 +1,4 @@
-package com.barbearia.Model.DAO;
+package com.barbearia.Model.DAO.Refatorar;
 
 import com.barbearia.Model.Agendamento;
 import com.barbearia.Model.Cliente;
